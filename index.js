@@ -27,7 +27,6 @@ app.post("/signups", async (req, res) => {
     // if(user){
     //     res.send("already exist")
     // }
-
     const data = req.body
     const rules = {
         firstname: joi.string().required().min(2).max(10).required(),
@@ -57,7 +56,7 @@ app.post("/signups", async (req, res) => {
             let newUser = new userModel({ firstname, lastname, email, password })
             console.log(newUser);
             await newUser.save();
-            res.send("Successfully registered")
+            res.render("login")
         }
     }
 })
